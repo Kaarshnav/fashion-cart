@@ -4,16 +4,18 @@ import HomeComp from "./routes/home/HomeComp";
 import { Outlet, Route, Routes } from "react-router-dom";
 const NavigationBar = () => {
   return (
-    <div style={{ fontFamily: "Permanent Marker" }}>
-      <h> Navigation Bar</h>
+    <div>
+      <h style={{ fontFamily: "Permanent Marker", marginLeft: "40%" }}>
+        Navigation Bar
+      </h>
       <Outlet />
     </div>
   );
 };
 const Shop = () => {
   return (
-    <div style={{ fontFamily: "Permanent Marker" }}>
-      <h> shop</h>
+    <div>
+      <h style={{ fontFamily: "Permanent Marker", marginLeft: "40%" }}> shop</h>
     </div>
   );
 };
@@ -21,7 +23,11 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<NavigationBar />}>
-        <Route path="home" element={<HomeComp />} />
+        {/*    mesting iside will match in nesting too  */}
+
+        {/*   <Route path="home" element={<HomeComp />} />  */}
+        <Route index element={<HomeComp />} />
+        {/*  when u do like that , i.e passing index , it will exact also return this component along with root url   */}
         <Route path="shop" element={<Shop />} />
       </Route>
     </Routes>
