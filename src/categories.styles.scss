@@ -4,6 +4,10 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+.appTitle {
+  margin-left: 40%;
+  font-family: "Fasthand";
+}
 
 .category-container {
   min-width: 30%;
@@ -49,6 +53,7 @@
   }
 
   .category-body-container {
+    font-family: "Permanent Marker";
     height: 90px;
     padding: 0 25px;
     display: flex;

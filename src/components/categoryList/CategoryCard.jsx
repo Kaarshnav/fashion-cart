@@ -1,6 +1,6 @@
 import React from "react";
 
-const CategoryItemComp = ({ category }) => {
+const CategoryCard = ({ category }) => {
   const { title, imageUrl } = category;
   console.log(category);
   return (
@@ -14,10 +14,10 @@ const CategoryItemComp = ({ category }) => {
 
       <div className="category-body-container">
         <h2>{title}</h2>
-        <p>Shop now </p>
+        <p>Shop Now </p>
       </div>
     </div>
   );
 };
 
-export default CategoryItemComp;
+export default CategoryCard;
