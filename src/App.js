@@ -1,17 +1,8 @@
 import "./App.css";
 import "./categories.styles.scss";
 import HomeComp from "./routes/home/HomeComp";
-import { Outlet, Route, Routes } from "react-router-dom";
-const NavigationBar = () => {
-  return (
-    <div>
-      <h style={{ fontFamily: "Permanent Marker", marginLeft: "40%" }}>
-        Navigation Bar
-      </h>
-      <Outlet />
-    </div>
-  );
-};
+import { Route, Routes } from "react-router-dom";
+import NavigationBar from "./routes/navigation/NavigationBar";
 const Shop = () => {
   return (
     <div>
