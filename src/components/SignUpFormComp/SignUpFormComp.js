@@ -3,6 +3,7 @@ import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase";
+import ButtonComp from "../ButtonComp/ButtonComp";
 import FormInput from "../FormInput/FormInput";
 import "./sign-up-form.styles.scss";
 function SignUpFormComp() {
@@ -92,7 +93,10 @@ function SignUpFormComp() {
           value={formVal.confirmPassword}
         />
 
-        <button type="submit">Sign Up </button>
+        {/*<button type="submit">Sign Up </button>*/}
+        <ButtonComp type="submit">
+          <h1>Sign up</h1>
+        </ButtonComp>
       </form>
     </div>
   );
