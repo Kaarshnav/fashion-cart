@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
-  signInUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase";
-
+import FormInput from "../FormInput/FormInput";
+import "./sign-up-form.styles.scss";
 function SignUpFormComp() {
   const defaultFormVal = {
     displayName: "",
@@ -55,41 +55,43 @@ function SignUpFormComp() {
 
   console.log(formVal);
   return (
-    <div>
-      <h1>Sign Up with your email and password</h1>
+    <div className="sign-up-container">
+      <h2>Don't have an account </h2>
+      <span>Sign Up with your email and password</span>
       <form onSubmit={sigUpWithEmailAndPass}>
-        <label> Display Name</label>
-        <input
-          required
+        <FormInput
+          label="Display Name "
           type={"text"}
-          name="displayName"
+          required
           onChange={handleChange}
           value={formVal.displayName}
+          name={"displayName"}
         />
-        <label> Email </label>
-        <input
+        <FormInput
+          label="Email "
+          type={"text"}
           required
-          type={"email"}
-          name="email"
           onChange={handleChange}
+          name="email"
           value={formVal.email}
         />
-        <label> Password </label>
-        <input
-          required
+        <FormInput
+          label="Password"
           type={"password"}
-          name="password"
+          required
           onChange={handleChange}
+          name="password"
           value={formVal.password}
         />
-        <label> Confirm Password</label>
-        <input
-          required
+        <FormInput
+          label="Confirm Password"
           type={"password"}
-          name="confirmPassword"
+          required
           onChange={handleChange}
+          name="confirmPassword"
           value={formVal.confirmPassword}
         />
+
         <button type="submit">Sign Up </button>
       </form>
     </div>
