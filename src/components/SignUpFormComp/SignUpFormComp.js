@@ -57,8 +57,10 @@ function SignUpFormComp() {
   console.log(formVal);
   return (
     <div className="sign-up-container">
-      <h2>Don't have an account </h2>
-      <span>Sign Up with your email and password</span>
+      <h2 className="titleCompStyle">Don't have an account ? </h2>
+      <span className="titleCompStyle">
+        Sign Up with your email and password
+      </span>
       <form onSubmit={sigUpWithEmailAndPass}>
         <FormInput
           label="Display Name "
@@ -95,7 +97,7 @@ function SignUpFormComp() {
 
         {/*<button type="submit">Sign Up </button>*/}
         <ButtonComp type="submit">
-          <h1>Sign up</h1>
+          <h1 className="btnTextCompStyle">Sign up</h1>
         </ButtonComp>
       </form>
     </div>

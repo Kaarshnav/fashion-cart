@@ -3,7 +3,7 @@ import "./categories.styles.scss";
 import HomeComp from "./routes/home/HomeComp";
 import { Route, Routes } from "react-router-dom";
 import NavigationBar from "./routes/navigation/NavigationBar";
-import SignInComp from "./routes/signIn/SignInComp";
+import Authentication from "./routes/authentication/Authentication";
 const Shop = () => {
   return (
     <div>
@@ -20,8 +20,8 @@ const App = () => {
         {/*   <Route path="home" element={<HomeComp />} />  */}
         <Route index element={<HomeComp />} />
         {/*  when u do like that , i.e passing index , it will exact also return this component along with root url   */}
-        <Route path="shop" element={<Shop />} />
-        <Route path="signin" element={<SignInComp />} />
+        <Route path="Shop" element={<Shop />} />
+        <Route path="Authentication" element={<Authentication />} />
       </Route>
     </Routes>
   );
