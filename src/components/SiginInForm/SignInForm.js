@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ButtonComp from "../ButtonComp/ButtonComp";
 import FormInput from "../FormInput/FormInput";
 import "./sign-in-form.styles.scss";
+import { UserContext } from "./../../contexts/userContext.jsx";
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
@@ -12,8 +13,11 @@ function SignInForm() {
     email: "",
     password: "",
   };
+  const { setCurrentUser } = useContext(UserContext); //  taking out fn , for setting current user , that is present in context ,
+
   const [formVal, setFormVal] = useState(defaultFormVal);
   //   const { displayName, email, password, confirmPassword } = formVal;
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormVal({ ...formVal, [name]: value });
@@ -34,6 +38,7 @@ function SignInForm() {
         email,
         password
       );
+      setCurrentUser(response.user); // setting user in context using setter fn
       response && alert(" Sigin succesful");
       console.log(response);
       resetFormValues();

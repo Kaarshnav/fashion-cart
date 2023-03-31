@@ -4,13 +4,16 @@ import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-
+import { UserProvider } from "./contexts/userContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     {/* wrapping app inside browser router so that it keeps tracks of routing bw urls*/}
     <BrowserRouter>
-      <App />
+      {/* wrapping app inside userProvider so that all can access that */}
+      <UserProvider>
+        <App />
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
