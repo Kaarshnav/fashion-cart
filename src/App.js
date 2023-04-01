@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import NavigationBar from "./routes/navigation/NavigationBar";
 import Authentication from "./routes/authentication/Authentication";
 import ShopComponent from "./routes/shop/ShopComponent";
+import CartDropDownComp from "./components/CartDropDown/CartDropDownComp";
 const App = () => {
   return (
     <Routes>
@@ -16,6 +17,7 @@ const App = () => {
         {/*  when u do like that , i.e passing index , it will exact also return this component along with root url   */}
         <Route path="Shop" element={<ShopComponent />} />
         <Route path="Authentication" element={<Authentication />} />
+        <Route path="Cart" element={<CartDropDownComp />} />
       </Route>
     </Routes>
   );

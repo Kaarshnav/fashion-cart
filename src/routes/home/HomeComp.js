@@ -33,7 +33,7 @@ const HomeComp = (props) => {
     <div>
       {/* outlet to render other matching component too if outlet is above next comp will be above else below  */}
       <Outlet />
-      <h2 className="appTitle"> Jai shree Krishna </h2>
+      {/*  <h2 className="appTitle"> Jai shree Krishna </h2> */}
       <CategoryList categories={categories} />
     </div>
   );

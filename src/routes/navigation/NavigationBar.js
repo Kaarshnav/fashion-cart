@@ -3,10 +3,15 @@ import { Outlet, Link } from "react-router-dom";
 import { Fragment, useContext } from "react";
 import { ReactComponent as KalashLogo } from "./../../assets/crown.svg";
 import { UserContext } from "../../contexts/userContext";
+import { CartContext } from "../../contexts/CartContext";
 import { signOutUser } from "../../utils/firebase/firebase";
 import "./navigation.styles.scss";
+import CartIconComp from "../../components/CartIconComp/CartIconComp";
+import CartDropDownComp from "../../components/CartDropDown/CartDropDownComp";
 const NavigationBar = () => {
   const { currentUser } = useContext(UserContext);
+  const { cartState, setCartState } = useContext(CartContext);
+
   // accesing current user from context
   // const signOutHandlerForContext = async () => {
   // await signOutUser();
@@ -24,19 +29,27 @@ const NavigationBar = () => {
           <Link className="nav-link" to="/shop">
             Shop
           </Link>
-        </div>
 
-        {currentUser ? (
-          <span className="nav-link" onClick={signOutUser}>
-            Sign Out
-          </span>
-        ) : (
-          <div className="signin-container">
-            <Link className="signin-link" to="/Authentication">
+          {currentUser ? (
+            <span className="nav-link" onClick={signOutUser}>
+              Sign Out
+            </span>
+          ) : (
+            <Link className="nav-link" to="/Authentication">
               Signin
             </Link>
+          )}
+
+          <div
+            onClick={() => {
+              setCartState(!cartState);
+            }}
+          >
+            <CartIconComp />
           </div>
-        )}
+        </div>
+
+        {cartState && <CartDropDownComp />}
       </div>
 
       <Outlet />
