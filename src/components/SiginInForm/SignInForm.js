@@ -1,8 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
+// import  { useContext } from "react";
 import ButtonComp from "../ButtonComp/ButtonComp";
 import FormInput from "../FormInput/FormInput";
 import "./sign-in-form.styles.scss";
-import { UserContext } from "./../../contexts/userContext.jsx";
+// import { UserContext } from "./../../contexts/userContext.jsx";
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
@@ -13,7 +14,7 @@ function SignInForm() {
     email: "",
     password: "",
   };
-  const { setCurrentUser } = useContext(UserContext); //  taking out fn , for setting current user , that is present in context ,
+  // const { setCurrentUser } = useContext(UserContext); //  taking out fn , for setting current user , that is present in context ,
 
   const [formVal, setFormVal] = useState(defaultFormVal);
   //   const { displayName, email, password, confirmPassword } = formVal;
@@ -26,8 +27,10 @@ function SignInForm() {
     setFormVal(defaultFormVal);
   };
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    const userDocRef = await createUserDocumentFromAuth(user);
+    // const { user } = await signInWithGooglePopup();
+    await signInWithGooglePopup();
+    //setCurrentUser(user);
+    // createUserDocumentFromAuth(user);
   };
   const sigUpWithEmailAndPass = async (event) => {
     event.preventDefault();
@@ -38,9 +41,9 @@ function SignInForm() {
         email,
         password
       );
-      setCurrentUser(response.user); // setting user in context using setter fn
-      response && alert(" Sigin succesful");
-      console.log(response);
+      // setCurrentUser(response.user); // setting user in context using setter fn
+      // response && alert(" Sigin succesful");
+      // console.log(response);
       resetFormValues();
     } catch (error) {
       switch (error.code) {
