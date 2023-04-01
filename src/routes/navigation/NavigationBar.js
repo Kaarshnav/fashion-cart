@@ -10,7 +10,7 @@ import CartIconComp from "../../components/CartIconComp/CartIconComp";
 import CartDropDownComp from "../../components/CartDropDown/CartDropDownComp";
 const NavigationBar = () => {
   const { currentUser } = useContext(UserContext);
-  const { cartState, setCartState } = useContext(CartContext);
+  const { cartState } = useContext(CartContext);
 
   // accesing current user from context
   // const signOutHandlerForContext = async () => {
@@ -40,13 +40,7 @@ const NavigationBar = () => {
             </Link>
           )}
 
-          <div
-            onClick={() => {
-              setCartState(!cartState);
-            }}
-          >
-            <CartIconComp />
-          </div>
+          <CartIconComp />
         </div>
 
         {cartState && <CartDropDownComp />}

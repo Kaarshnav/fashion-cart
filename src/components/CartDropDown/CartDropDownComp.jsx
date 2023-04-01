@@ -5,7 +5,7 @@ function CartDropDownComp() {
   return (
     <div className="cart-dropdown-container">
       <div className="cart-items"></div>
-      <ButtonComp buttonType={"inverted"}> CHECKOUT</ButtonComp>
+      <ButtonComp> CHECKOUT</ButtonComp>
     </div>
   );
 }
