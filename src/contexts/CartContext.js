@@ -2,6 +2,33 @@ import { createContext, useState, useEffect } from "react";
 
 //as actual val of context u want to access
 
+const incItemQtyHelper = (cartItems, productToAdd) => {
+  const existingCartItem = cartItems.find(
+    (cartItem) => cartItem.id === productToAdd.id
+  );
+  if (existingCartItem) {
+    return cartItems.map((cartItem) =>
+      cartItem.id === productToAdd.id
+        ? { ...cartItem, quantity: cartItem.quantity + 1 }
+        : cartItem
+    );
+  }
+};
+const decItemQtyHelper = (cartItems, productToAdd) => {
+  const existingCartItem = cartItems.find(
+    (cartItem) => cartItem.id === productToAdd.id
+  );
+  if (existingCartItem) {
+    return cartItems.map((cartItem) =>
+      cartItem.id === productToAdd.id
+        ? { ...cartItem, quantity: cartItem.quantity - 1 }
+        : cartItem
+    );
+  }
+};
+const removeItemHelper = (cartItems, productToAdd) => {
+  return cartItems.filter((item) => item.id !== productToAdd.id);
+};
 const addCartItemHelper = (cartItems, productToAdd) => {
   // if already found inc count , else create product in cart with qty
 
@@ -33,6 +60,9 @@ export const CartContext = createContext({
   cartItems: [],
   addItemsToCart: () => {},
   cartCount: 0,
+  incItemsQtyToCart: () => {},
+  decItemsQtyToCart: () => {},
+  removeItemFromCart: () => {},
 });
 
 export const CartProvider = ({ children }) => {
@@ -42,6 +72,15 @@ export const CartProvider = ({ children }) => {
 
   const addItemsToCart = (productToAdd) => {
     setCartItems(addCartItemHelper(cartItems, productToAdd));
+  };
+  const incItemsQtyToCart = (productToAdd) => {
+    setCartItems(incItemQtyHelper(cartItems, productToAdd));
+  };
+  const decItemsQtyToCart = (productToAdd) => {
+    setCartItems(decItemQtyHelper(cartItems, productToAdd));
+  };
+  const removeItemFromCart = (productToAdd) => {
+    setCartItems(removeItemHelper(cartItems, productToAdd));
   };
   useEffect(() => {
     let count = 0;
@@ -61,6 +100,9 @@ export const CartProvider = ({ children }) => {
     addItemsToCart,
     cartItems,
     cartCount,
+    incItemsQtyToCart,
+    decItemsQtyToCart,
+    removeItemFromCart,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

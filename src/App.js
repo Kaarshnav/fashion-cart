@@ -6,6 +6,7 @@ import NavigationBar from "./routes/navigation/NavigationBar";
 import Authentication from "./routes/authentication/Authentication";
 import ShopComponent from "./routes/shop/ShopComponent";
 import CartDropDownComp from "./components/CartDropDown/CartDropDownComp";
+import CheckOutPage from "./routes/CheckOutPage/CheckOutPage";
 const App = () => {
   return (
     <Routes>
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="Shop" element={<ShopComponent />} />
         <Route path="Authentication" element={<Authentication />} />
         <Route path="Cart" element={<CartDropDownComp />} />
+        <Route path="CheckOut" element={<CheckOutPage />} />
       </Route>
     </Routes>
   );

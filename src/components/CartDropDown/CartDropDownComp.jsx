@@ -3,6 +3,8 @@ import ButtonComp from "../ButtonComp/ButtonComp";
 import CartItemComp from "../CartItem/CartItemComp";
 import { CartContext } from "../../contexts/CartContext";
 import "./cart-dropdown.styles.scss";
+import { Outlet, Link } from "react-router-dom";
+import CheckOutPage from "../../routes/CheckOutPage/CheckOutPage";
 function CartDropDownComp() {
   //   const cartData = [
   //     { name: "Shoes", quantity: 12 },
@@ -18,7 +20,9 @@ function CartDropDownComp() {
           <CartItemComp key={item.id} cartItem={item} />
         ))}
       </div>
-      <ButtonComp> CHECKOUT</ButtonComp>
+      <Link className="nav-link" to="/CheckOut">
+        <ButtonComp>CHECKOUT</ButtonComp>
+      </Link>
     </div>
   );
 }
