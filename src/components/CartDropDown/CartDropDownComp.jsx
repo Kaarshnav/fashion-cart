@@ -3,8 +3,9 @@ import ButtonComp from "../ButtonComp/ButtonComp";
 import CartItemComp from "../CartItem/CartItemComp";
 import { CartContext } from "../../contexts/CartContext";
 import "./cart-dropdown.styles.scss";
-import { Outlet, Link } from "react-router-dom";
-import CheckOutPage from "../../routes/CheckOutPage/CheckOutPage";
+import { useNavigate } from "react-router-dom";
+// import {  Link } from "react-router-dom";
+
 function CartDropDownComp() {
   //   const cartData = [
   //     { name: "Shoes", quantity: 12 },
@@ -12,6 +13,10 @@ function CartDropDownComp() {
   //     { name: "Cap", quantity: 7 },
   //   ];
   const { cartItems } = useContext(CartContext);
+  const navigate = useNavigate();
+  const goToCheckoutHandler = () => {
+    navigate("/CheckOut");
+  };
 
   return (
     <div className="cart-dropdown-container">
@@ -20,9 +25,15 @@ function CartDropDownComp() {
           <CartItemComp key={item.id} cartItem={item} />
         ))}
       </div>
+      {/*
+
+optimizing this use of link part by useNavigate hook  from react-router-dom
+
       <Link className="nav-link" to="/CheckOut">
         <ButtonComp>CHECKOUT</ButtonComp>
       </Link>
+        */}
+      <ButtonComp onClick={goToCheckoutHandler}>CHECKOUT</ButtonComp>
     </div>
   );
 }

@@ -19,11 +19,15 @@ const decItemQtyHelper = (cartItems, productToAdd) => {
     (cartItem) => cartItem.id === productToAdd.id
   );
   if (existingCartItem) {
-    return cartItems.map((cartItem) =>
-      cartItem.id === productToAdd.id
-        ? { ...cartItem, quantity: cartItem.quantity - 1 }
-        : cartItem
-    );
+    if (existingCartItem.quantity === 1)
+      return removeItemHelper(cartItems, productToAdd);
+    else {
+      return cartItems.map((cartItem) =>
+        cartItem.id === productToAdd.id
+          ? { ...cartItem, quantity: cartItem.quantity - 1 }
+          : cartItem
+      );
+    }
   }
 };
 const removeItemHelper = (cartItems, productToAdd) => {
